@@ -17,7 +17,6 @@ export class AppService {
     phoneNumber: string;
     password: string;
   }): Promise<any> {
-    // Check if the username already exists
     const existingUser = await this.prismaService.users.findUnique({
       where: { username: userData.username },
     });

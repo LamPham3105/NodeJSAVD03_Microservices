@@ -18,7 +18,7 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         }
       },
       {
-        name: "PRODUCT_NAME",
+        name: "RESTAURANT_NAME",
         transport: Transport.RMQ,
         options: {
           urls: ["amqp://admin:1234@localhost:5672"],
