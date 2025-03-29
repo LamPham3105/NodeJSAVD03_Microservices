@@ -39,13 +39,14 @@ const Page: React.FC = () => {
         password,
       });
 
-      if (response.data) {
-        // Ensure that response.data is a string before calling toLocaleString
+      const data = response.data.user;
+
+      if (data.success) {
         localStorage.setItem("data", JSON.stringify(response.data));
         message.success("Đăng nhập thành công!");
         router.push("/dashboard");
       } else {
-        message.error("Đăng nhập thất bại. Vui lòng thử lại.");
+        message.error(data.message || "Đăng nhập thất bại. Vui lòng thử lại.");
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {

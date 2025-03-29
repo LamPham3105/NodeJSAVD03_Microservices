@@ -10,8 +10,8 @@ import { PrismaModule } from './prisma/prisma.module';
   imports: [
     PrismaModule,
     ConfigModule.forRoot({ isGlobal: true }),
-    RedisCacheModule,
     ElasticModule,
+    RedisCacheModule,
   ],
   controllers: [AppController],
   providers: [AppService],

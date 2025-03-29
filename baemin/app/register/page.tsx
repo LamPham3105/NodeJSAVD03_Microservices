@@ -65,13 +65,24 @@ const Page: React.FC = () => {
         password,
       });
 
-      if (response.status === 201) {
-        message.success("Đăng ký thành công!");
+      const data = response.data.user;
+
+      if (data.success) {
+        message.success(data.message || "Đăng ký thành công!");
         router.push("/login");
+      } else {
+        message.error(data.message || "Đăng ký thất bại.");
       }
     } catch (error: any) {
-      console.log("error: ", error);
-      const errorMessage = error.response?.data?.message || "Đăng ký thất bại.";
+      let errorMessage = "Đăng ký thất bại.";
+
+      // Handle validation error arrays from NestJS
+      if (Array.isArray(error.response?.data?.message)) {
+        errorMessage = error.response.data.message.join(" ");
+      } else if (error.response?.data?.message) {
+        errorMessage = error.response.data.message;
+      }
+
       message.error(errorMessage);
     } finally {
       setLoading(false);

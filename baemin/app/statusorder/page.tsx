@@ -13,7 +13,7 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/order")
+      .get("http://localhost:8080/orders")
       .then((response) => {
         setOrders(response.data);
         if (response.data.length > 0) {

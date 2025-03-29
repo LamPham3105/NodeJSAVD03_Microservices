@@ -104,7 +104,7 @@ export default function Home() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/order",
+        "http://localhost:8080/orders",
         orderData
       );
       message.success("Đặt hàng thành công!");

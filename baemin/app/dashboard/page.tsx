@@ -42,7 +42,8 @@ export default function Home() {
       setCategories(res.data);
     });
 
-    axios.get(`http://localhost:8080/banner`).then((res) => {
+    axios.get(`http://localhost:8080/banners`).then((res) => {
+      console.log("res: ", res);
       setBanner(res.data);
     });
 
